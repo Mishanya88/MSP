@@ -1,0 +1,55 @@
+#!/bin/bash
+echo -e "\E[H\E[2J"
+echo -e "\E(0"
+echo -e -n "\E[5;10H"
+echo -n "l"
+for number in {1..6}
+do
+	echo -n "q"
+done
+echo -n "k"
+
+
+for number in {1..6}
+do
+	rows=5
+	columns=10
+	let "rows+=number"
+	echo -e -n "\E[${rows};${columns}H"
+	echo -n "x"
+	let "columns+=7"
+	echo -e -n "\E[${rows};${columns}H"
+	echo -n "x"
+	
+done
+echo -e -n "\E[12;10H"
+echo -n "m"
+for number in {1..6}
+do
+	echo -n "q"
+done
+echo -n "j"
+
+echo -e -n "\E[6;10H"
+columns=10
+for i in {1..6}
+do
+	let "columns+=1"
+	echo -e -n "\E[6;${columns}H"
+	echo -n "a"
+    echo -e -n "\E[11;${columns}H"
+	echo -n "a"
+done
+columns=6
+for i in {1..5} 
+do
+	let "columns+=1"
+	echo -e -n "\E[${columns};11H"
+	echo -n "a"
+    echo -e -n "\E[${columns};16H"
+	echo -n "a"
+done
+
+
+echo -e "\E(B"
+echo -e -n "\E[15;1H"
